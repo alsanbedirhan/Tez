@@ -1,45 +1,29 @@
-﻿@{
+﻿ @using Tez.Models
+
+ @model Tuple<List<Image>,List<Duyuru>>
+
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
-    int a = 56;
 }
 
 <section class="flexslider">
     <ul class="slides">
-        <li style="background-image: url(enlight-master/img/slider_1.jpg)" class="overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="probootstrap-slider-text text-center">
-                            <h1 class="probootstrap-heading probootstrap-animate">Your Bright Future is Our Mission</h1>
+        @foreach (var item in Model.Item1)
+        {
+            <li style="background-image: url(/../image/main/@item.ImageURL)" class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="probootstrap-slider-text text-center">
+                                <h1 class="probootstrap-heading probootstrap-animate">Düzce Üniversitesine Hoşgeldiniz</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </li>
-        <li style="background-image: url(enlight-master/img/slider_2.jpg)" class="overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="probootstrap-slider-text text-center">
-                            <h1 class="probootstrap-heading probootstrap-animate">Education is Life</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </li>
-        <li style="background-image: url(enlight-master/img/slider_3.jpg)" class="overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="probootstrap-slider-text text-center">
-                            <h1 class="probootstrap-heading probootstrap-animate">Helping Each of Our Students Fulfill the Potential</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
+            </li>
+        }
     </ul>
 </section>
 
@@ -78,7 +62,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
-                <h2>2006'dan Bugüne</h2>             
+                <h2>2006'dan Bugüne</h2>
             </div>
         </div>
         <!-- END row -->
@@ -105,7 +89,7 @@
                                     <i class="icon-user-tie"></i>
                                 </div>
                                 <div class="probootstrap-text">
-                                     <span>1</span>
+                                    <span>1</span>
                                     <span class="probootstrap-counter-label">Enstitü</span>
                                 </div>
                             </div>
@@ -117,7 +101,7 @@
                                     <i class="icon-library"></i>
                                 </div>
                                 <div class="probootstrap-text">
-                                     <span>2</span>
+                                    <span>2</span>
                                     <span class="probootstrap-counter-label">Yüksekokul</span>
                                 </div>
                             </div>
@@ -129,7 +113,7 @@
                                     <i class="icon-smile2"></i>
                                 </div>
                                 <div class="probootstrap-text">
-                                     <span>10</span>
+                                    <span>10</span>
                                     <span class="probootstrap-counter-label">Meslek Yüksekokulu</span>
                                 </div>
                             </div>
@@ -146,7 +130,7 @@
                                     <i class="icon-users2"></i>
                                 </div>
                                 <div class="probootstrap-text">
-                                     <span>84</span>
+                                    <span>84</span>
                                     <span class="probootstrap-counter-label">Lisans Programı</span>
                                 </div>
                             </div>
@@ -180,7 +164,7 @@
                                     <i class="icon-smile2"></i>
                                 </div>
                                 <div class="probootstrap-text">
-                                     <span>12</span>
+                                    <span>12</span>
                                     <span class="probootstrap-counter-label">Koordinatörlük</span>
                                 </div>
                             </div>
@@ -197,7 +181,7 @@
                                     <i class="icon-users2"></i>
                                 </div>
                                 <div class="probootstrap-text">
-                                     <span>77</span>
+                                    <span>77</span>
                                     <span class="probootstrap-counter-label">Tübitak Projesi</span>
                                 </div>
                             </div>
@@ -208,7 +192,7 @@
                                     <i class="icon-user-tie"></i>
                                 </div>
                                 <div class="probootstrap-text">
-                                     <span>1092</span>
+                                    <span>1092</span>
                                     <span class="probootstrap-counter-label">BAP Projesi</span>
                                 </div>
                             </div>
@@ -220,7 +204,7 @@
                                     <i class="icon-library"></i>
                                 </div>
                                 <div class="probootstrap-text">
-                                     <span>-</span>
+                                    <span>-</span>
                                     <span class="probootstrap-counter-label">Sponsorlu Proje</span>
                                 </div>
                             </div>
@@ -232,7 +216,7 @@
                                     <i class="icon-smile2"></i>
                                 </div>
                                 <div class="probootstrap-text">
-                                     <span>1</span>
+                                    <span>1</span>
                                     <span class="probootstrap-counter-label">Patent</span>
                                 </div>
                             </div>
@@ -243,7 +227,7 @@
         </div>
     </div>
     <!-- END row -->
-    
+
 </section>
 
 <section class="probootstrap-section probootstrap-bg-white probootstrap-border-top">
@@ -348,55 +332,21 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="owl-carousel" id="owl1">
-                                    <div class="item">
-                                        <a href="#" class="probootstrap-featured-news-box">
-                                            <figure class="probootstrap-media"><img src="~/enlight-master/img/img_sm_3.jpg" alt="Free Bootstrap Template by ProBootstrap.com" class="img-responsive"></figure>
-                                            <div class="probootstrap-text">
-                                                <h3>Tempora consectetur unde nisi</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, ut.</p>
-                                                <span class="probootstrap-date"><i class="icon-calendar"></i>July 9, 2017</span>
+                                    @foreach (var x in Model.Item2)
+                                    {
+                                        <div class="item">
+                                            <a href="#" class="probootstrap-featured-news-box">
+                                                <figure class="probootstrap-media"><img src="~/image/@x.ImageUrl" class="img-responsive" style="height:600px"></figure>
+                                                <div class="probootstrap-text">
+                                                    <h3 style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">@x.Baslik</h3>
+                                                    <p style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">@x.Aciklama</p>
+                                                    <span class="probootstrap-date"><i class="icon-calendar"></i>@x.Tarih</span>
 
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- END item -->
-                                    <div class="item">
-                                        <a href="#" class="probootstrap-featured-news-box">
-                                            <figure class="probootstrap-media"><img src="~/enlight-master/img/img_sm_1.jpg" alt="Free Bootstrap Template by ProBootstrap.com" class="img-responsive"></figure>
-                                            <div class="probootstrap-text">
-                                                <h3>Tempora consectetur unde nisi</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, officia.</p>
-                                                <span class="probootstrap-date"><i class="icon-calendar"></i>July 9, 2017</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    }
 
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- END item -->
-                                    <div class="item">
-                                        <a href="#" class="probootstrap-featured-news-box">
-                                            <figure class="probootstrap-media"><img src="~/enlight-master/img/img_sm_2.jpg" alt="Free Bootstrap Template by ProBootstrap.com" class="img-responsive"></figure>
-                                            <div class="probootstrap-text">
-                                                <h3>Tempora consectetur unde nisi</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, dolores.</p>
-                                                <span class="probootstrap-date"><i class="icon-calendar"></i>July 9, 2017</span>
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- END item -->
-                                    <div class="item">
-                                        <a href="#" class="probootstrap-featured-news-box">
-                                            <figure class="probootstrap-media"><img src="~/enlight-master/img/img_sm_3.jpg" alt="Free Bootstrap Template by ProBootstrap.com" class="img-responsive"></figure>
-                                            <div class="probootstrap-text">
-                                                <h3>Tempora consectetur unde nisi</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, earum.</p>
-                                                <span class="probootstrap-date"><i class="icon-calendar"></i>July 9, 2017</span>
-
-
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- END item -->
                                 </div>
                             </div>
                         </div>

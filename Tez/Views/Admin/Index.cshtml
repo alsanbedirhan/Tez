@@ -1,7 +1,38 @@
-﻿
+﻿ @using Tez.Models
+ @model List<Duyuru>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Components</span>
+        <h3 class="page-title">Blog Posts</h3>
+    </div>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+            <div class="card card-small card-post h-100">
+                <div class="card-post__image" style="background-image: url(/../image/@item.ImageUrl)"></div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-fiord-blue" href="#">@item.Baslik</a>
+                    </h5>
+                    <p class="card-text">@item.Aciklama</p>
+                </div>
+                <div class="card-footer text-muted border-top py-3">
+                    <span class="d-inline-block">
+                        By
+                        <a class="text-fiord-blue" href="#" style="pointer-events: none;">@item.PaylasanAdmin</a> on
+                        <a class="text-fiord-blue" href="#" style="pointer-events: none;">@item.Tarih</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>

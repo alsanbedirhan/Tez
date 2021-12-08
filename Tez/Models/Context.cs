@@ -12,5 +12,6 @@ namespace Tez.Models
         { }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Duyuru> Duyurus { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }
