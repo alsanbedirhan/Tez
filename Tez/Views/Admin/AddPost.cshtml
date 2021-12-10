@@ -1,4 +1,4 @@
-﻿@model Tez.Models.DuyuruView
+﻿@model List<PostType>
 
 @{
     ViewData["Title"] = "AddPost";
@@ -17,8 +17,8 @@
             <!-- Add New Post Form -->
             <div class="card card-small mb-3">
                 <div class="card-body">
-                    <input class="form-control form-control-lg mb-3" type="text" placeholder="Your Post Title" name="Baslik">
-                    <textarea name="Aciklama" style="width:100%;height:200px"></textarea>
+                    <input class="form-control form-control-lg mb-3" type="text" placeholder="Your Post Title" name="Baslik" required>
+                    <textarea name="Aciklama" style="width:100%;height:200px" required></textarea>
                 </div>
             </div>
             <!-- / Add New Post Form -->
@@ -35,14 +35,25 @@
                             <span class="d-flex mb-2 ml-auto">
                                 <i class="material-icons mr-1">flag</i>
                                 <strong class="mr-1">File: </strong>
-                                <input type="file" name="ImageUrl" style="margin-left:auto" accept="image/*"/>
-                            </span>                                                
+                                <input type="file" name="ImageUrl" style="margin-left:auto" accept="image/*" required>
+                            </span>
+                            
                         </li>
-                        <li class="list-group-item d-flex px-3">                         
+                        <li class="list-group-item d-flex px-3">
+                            <span class="d-flex">                                                                                              
+                                <select class="custom-select custom-select-sm" style="max-width: 130px;" name="PostTypeID">
+                                    @foreach(var x in Model)
+                                    {
+                                    <option value=@x.PostTypeID>@x.TypeName</option>  
+                                    }                              
+                                </select>
+                            </span>
                             <button class="btn btn-sm btn-accent ml-auto">
                                 <i class="material-icons">file_copy</i> Publish
                             </button>
                         </li>
+
+
                     </ul>
                 </div>
             </div>

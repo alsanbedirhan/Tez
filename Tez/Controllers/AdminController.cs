@@ -1,7 +1,10 @@
 ﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Tez.Filter;
@@ -19,18 +22,19 @@ namespace Tez.Controllers
         }
         public IActionResult Index()
         {
-            var list = _context.Duyurus.ToList();
+            var list = _context.Posts.Include(x=>x.PostType).ToList();
             return View(list);
         }
         [HttpGet]
         public IActionResult AddPost()
-        {
-            return View();
+        {           
+            var list = _context.PostTypes.ToList();
+            return View(list);
         }
         [HttpPost]
-        public IActionResult AddPost(DuyuruView d)
-        {         
-            Duyuru duy = new Duyuru();
+        public IActionResult AddPost(PostView d)
+        {
+            Post duy = new Post();
             if(d.ImageUrl!= null)
             {
                 var extension = Path.GetExtension(d.ImageUrl.FileName);
@@ -44,9 +48,10 @@ namespace Tez.Controllers
             duy.Baslik = d.Baslik;
             duy.Aciklama = d.Aciklama;
             duy.Tarih = DateTime.Now;
-            _context.Duyurus.Add(duy);
+            duy.PostTypeID = d.PostTypeID;
+            _context.Posts.Add(duy);
             _context.SaveChanges();
-            return RedirectToAction("Index");           
+            return RedirectToAction("Index"); 
         }
         [HttpGet]
         public IActionResult Photo()
@@ -79,6 +84,13 @@ namespace Tez.Controllers
             _context.Images.Remove(dep);
             _context.SaveChanges();
             return RedirectToAction("Photo");
+        }
+        public IActionResult PostSil(int id)
+        {
+            var dep = _context.Posts.Find(id);
+            _context.Posts.Remove(dep);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

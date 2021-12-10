@@ -11,7 +11,8 @@ namespace Tez.Models
         public Context(DbContextOptions<Context> options) : base(options)
         { }
         public DbSet<Admin> Admins { get; set; }
-        public DbSet<Duyuru> Duyurus { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<PostType> PostTypes { get; set; }
     }
 }

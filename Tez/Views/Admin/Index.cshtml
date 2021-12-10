@@ -1,6 +1,5 @@
 ﻿ @using Tez.Models
- @model List<Duyuru>
-
+ @model List<Post>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -29,7 +28,9 @@
                     <span class="d-inline-block">
                         By
                         <a class="text-fiord-blue" href="#" style="pointer-events: none;">@item.PaylasanAdmin</a> on
-                        <a class="text-fiord-blue" href="#" style="pointer-events: none;">@item.Tarih</a>
+                        <a class="text-fiord-blue" href="#" style="pointer-events: none;">@item.Tarih</a> for
+                        <a class="text-fiord-blue" href="#" style="pointer-events: none;">@item.PostType.TypeName</a>
+                        <a class="text-danger" href="/Admin/PostSil/@item.PostID"><strong>Sil</strong></a>
                     </span>
                 </div>
             </div>
