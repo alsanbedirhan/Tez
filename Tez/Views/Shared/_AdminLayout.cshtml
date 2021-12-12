@@ -50,37 +50,31 @@ string fullname = Context.Session.GetString("fullname");
               <li class="nav-item">
                 <a class="nav-link" href="/Admin/Index">
                   <i class="material-icons">vertical_split</i>
-                  <span>Blog Posts</span>
+                  <span>Paylaşımlar</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="/Admin/AddPost">
                   <i class="material-icons">note_add</i>
-                  <span>Add New Post</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#">
-                  <i class="material-icons">view_module</i>
-                  <span>Forms &amp; Components</span>
+                  <span>Paylaş</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="#">
                   <i class="material-icons">table_chart</i>
-                  <span>Tables</span>
+                  <span>Yeni Konu</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="#">
                   <i class="material-icons">person</i>
-                  <span>User Profile</span>
+                  <span>Profil</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="/Admin/Register">
                   <i class="material-icons">error</i>
-                  <span>Errors</span>
+                  <span>Admin Ekle</span>
                 </a>
               </li>
             </ul>
@@ -100,12 +94,12 @@ string fullname = Context.Session.GetString("fullname");
                   <div class="dropdown-menu dropdown-menu-small">
                     <a class="dropdown-item" href="#">
                       <i class="material-icons">&#xE7FD;</i> Profile</a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="/Admin/Index">
                       <i class="material-icons">vertical_split</i> Blog Posts</a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="/Admin/AddPost">
                       <i class="material-icons">note_add</i> Add New Post</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#">
+                    <a class="dropdown-item text-danger" href="/Login/Logout">
                       <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                   </div>
                 </li>

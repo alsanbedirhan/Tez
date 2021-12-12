@@ -39,23 +39,6 @@ namespace Tez.Controllers
         }
 
         //register ilk admin hesabı oluşturulması için admin hesabı olmadan hesap eklemeye izin verilmiştir
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<ActionResult> Register(Admin a)
-        {
-            var bytes = new System.Text.UTF8Encoding().GetBytes(a.Sifre);
-            var hashBytes = System.Security.Cryptography.MD5.Create().ComputeHash(bytes);
-            a.Sifre = Convert.ToBase64String(hashBytes);
-
-            await _context.AddAsync(a);
-            await _context.SaveChangesAsync();
-            return Redirect("/Login/Index");
-        }
-
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();

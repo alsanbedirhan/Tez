@@ -1,0 +1,14 @@
+﻿@model AdminErrorViewModel
+@{
+    ViewData["Title"] = "AdminError";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="error">
+    <div class="error__content">
+        <h2>500</h2>
+        <h3>@Model.Error</h3>       
+        <a type="button" href="/Admin/Index" class="btn btn-accent btn-pill">&larr; Go Back</a>
+    </div>
+</div>
+

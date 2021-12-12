@@ -7,11 +7,11 @@
 
 <div class="page-header row no-gutters py-4">
     <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-        <span class="text-uppercase page-subtitle">Blog Posts</span>
+        <span class="text-uppercase page-subtitle">Paylaşımlar</span>
         <h3 class="page-title">Add New Post</h3>
     </div>
 </div>
-<form method="post" enctype="multipart/form-data">
+<form method="post" action="AddPost" enctype="multipart/form-data">
     <div class="row">
         <div class="col-lg-9 col-md-12">
             <!-- Add New Post Form -->
@@ -37,19 +37,22 @@
                                 <strong class="mr-1">File: </strong>
                                 <input type="file" name="ImageUrl" style="margin-left:auto" accept="image/*" required>
                             </span>
-                            
+
                         </li>
                         <li class="list-group-item d-flex px-3">
-                            <span class="d-flex">                                                                                              
+                            <span class="d-flex">
                                 <select class="custom-select custom-select-sm" style="max-width: 130px;" name="PostTypeID">
-                                    @foreach(var x in Model)
+                                    @foreach (var x in Model)
                                     {
-                                    <option value=@x.PostTypeID>@x.TypeName</option>  
-                                    }                              
+                                        <option value=@x.PostTypeID>@x.TypeName</option>
+                                    }
                                 </select>
                             </span>
-                            <button class="btn btn-sm btn-accent ml-auto">
-                                <i class="material-icons">file_copy</i> Publish
+                            <button class="btn btn-white px-3" data-toggle="modal" data-target="#firstmodal" type="button" style="padding: revert">
+                                <i class="material-icons">add</i>
+                            </button>
+                            <button class="btn btn-sm btn-success ml-auto">
+                                <i class="material-icons">file_copy</i> Yayınla
                             </button>
                         </li>
 
@@ -57,8 +60,67 @@
                     </ul>
                 </div>
             </div>
+           @* <div class='card card-small mb-3'>
+                <div class="card-header border-bottom">
+                    <h6 class="m-0">Kategoriler</h6>
+                </div>
+                <div class='card-body p-0'>
+                    <ul class="list-group list-group-small list-group-flush">
+                        @foreach (var x in Model)
+                        {
+                            <li class="list-group-item d-flex px-3">
+                                <span class="text-semibold text-fiord-blue">@x.TypeName</span>
+                            </li>
+                        }
+                        <li class="list-group-item d-flex px-3">
+                            <button type="button" class="btn btn-sm btn-accent ml-auto" data-toggle="modal" data-target="#firstmodal">
+                                <i class="fas fa-folder"></i> Kategori Ekle
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>*@
         </div>
     </div>
 </form>
 
+<form action="AddType" method="post">
+    <div class="modal fade" id="firstmodal">
+
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+
+            <div class="modal-content">
+                <div class='card card-small'>
+                    <div class="card-header border-bottom">
+                        <h4 class="m-0" style="display: contents">Kategoriler</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class='card-body p-0'>
+                        <ul class="list-group list-group-small list-group-flush">
+                            @foreach (var x in Model)
+                            {
+                                <li class="list-group-item d-flex px-3">
+                                    <span class="text-semibold text-fiord-blue">@x.TypeName</span>
+                                    <a class="ml-auto text-right text-semibold text-danger" href="/Admin/TypeSil/@x.PostTypeID"><strong>Sil</strong></a>
+                                </li>
+                            }
+
+                            <li class="list-group-item d-flex px-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="New category" name="TypeName" aria-label="Add new category">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-white" type="submit">
+                                            <i class="material-icons">add</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
 

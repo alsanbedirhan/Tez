@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Tez.Filter;
 using Tez.Models;
 
@@ -27,7 +28,7 @@ namespace Tez.Controllers
         }
         [HttpGet]
         public IActionResult AddPost()
-        {           
+        {
             var list = _context.PostTypes.ToList();
             return View(list);
         }
@@ -91,6 +92,49 @@ namespace Tez.Controllers
             _context.Posts.Remove(dep);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> Register(Admin a)
+        {
+            var bytes = new System.Text.UTF8Encoding().GetBytes(a.Sifre);
+            var hashBytes = System.Security.Cryptography.MD5.Create().ComputeHash(bytes);
+            a.Sifre = Convert.ToBase64String(hashBytes);
+
+            await _context.AddAsync(a);
+            await _context.SaveChangesAsync();
+            return Redirect("/Login/Index");
+        }
+
+        [HttpPost]
+        public IActionResult AddType(PostType p)
+        {            
+                _context.PostTypes.Add(p);
+                _context.SaveChanges();          
+                return RedirectToAction("AddPost");       
+        }
+        public IActionResult TypeSil(int id)
+        {        
+            if(_context.Posts.FirstOrDefault(x=>x.PostTypeID==id)==null)
+            {
+                var dep = _context.PostTypes.Find(id);
+                _context.PostTypes.Remove(dep);
+                _context.SaveChanges();
+                return RedirectToAction("AddPost");
+            }
+            else
+            {
+                return (RedirectToAction("AdminError", new AdminErrorViewModel { Error = "Silmeye çalıştığınız kategoriye ait paylaşımlar bulunmaktadır ilk önce paylaşımları siliniz" })); 
+            }
+        }
+        public IActionResult AdminError(AdminErrorViewModel adminErrorViewModel)
+        {
+            return View(adminErrorViewModel);
         }
     }
 }
