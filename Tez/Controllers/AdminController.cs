@@ -93,7 +93,6 @@ namespace Tez.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
         [HttpGet]
         public IActionResult Register()
         {
@@ -110,7 +109,6 @@ namespace Tez.Controllers
             await _context.SaveChangesAsync();
             return Redirect("/Login/Index");
         }
-
         [HttpPost]
         public IActionResult AddType(PostType p)
         {            
@@ -129,7 +127,8 @@ namespace Tez.Controllers
             }
             else
             {
-                return (RedirectToAction("AdminError", new AdminErrorViewModel { Error = "Silmeye çalıştığınız kategoriye ait paylaşımlar bulunmaktadır ilk önce paylaşımları siliniz" })); 
+                return RedirectToAction("AdminError", new AdminErrorViewModel
+                { Error = "Silmeye çalıştığınız kategoriye ait paylaşımlar bulunmaktadır ilk önce paylaşımları siliniz" }); 
             }
         }
         public IActionResult AdminError(AdminErrorViewModel adminErrorViewModel)

@@ -37,8 +37,6 @@ namespace Tez.Controllers
             }
             return Redirect("Index");
         }
-
-        //register ilk admin hesabı oluşturulması için admin hesabı olmadan hesap eklemeye izin verilmiştir
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
