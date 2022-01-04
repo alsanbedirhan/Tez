@@ -60,18 +60,6 @@ string fullname = Context.Session.GetString("fullname");
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#">
-                  <i class="material-icons">table_chart</i>
-                  <span>Yeni Konu</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#">
-                  <i class="material-icons">person</i>
-                  <span>Profil</span>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link " href="/Admin/Register">
                   <i class="material-icons">error</i>
                   <span>Admin Ekle</span>
@@ -92,15 +80,13 @@ string fullname = Context.Session.GetString("fullname");
                     <span class="d-none d-md-inline-block">@fullname</span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="#">
-                      <i class="material-icons">&#xE7FD;</i> Profile</a>
                     <a class="dropdown-item" href="/Admin/Index">
-                      <i class="material-icons">vertical_split</i> Blog Posts</a>
+                      <i class="material-icons">vertical_split</i> Paylaşımlar</a>
                     <a class="dropdown-item" href="/Admin/AddPost">
-                      <i class="material-icons">note_add</i> Add New Post</a>
+                      <i class="material-icons">note_add</i> Paylaş</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="/Login/Logout">
-                      <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+                      <i class="material-icons text-danger">&#xE879;</i> Çıkış Yap </a>
                   </div>
                 </li>
               </ul>
@@ -115,26 +101,6 @@ string fullname = Context.Session.GetString("fullname");
           <div class="main-content-container container-fluid px-4">
            @RenderBody()
           </div>
-          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
-            <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-              </li>
-            </ul>
-            <span class="copyright ml-auto my-auto mr-2">Copyright © 2021</span>
-          </footer>
         </main>
       </div>
     </div>

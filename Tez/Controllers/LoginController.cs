@@ -35,7 +35,7 @@ namespace Tez.Controllers
                 HttpContext.Session.SetString("fullname", user.Name+" "+user.Surname);           
                 return Redirect("/Admin/Index");
             }
-            return Redirect("Index");
+            return Redirect("/Login/Index");
         }
         public IActionResult Logout()
         {
