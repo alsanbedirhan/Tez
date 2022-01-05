@@ -12,7 +12,9 @@ using Tez.Models;
 
 namespace Tez.Controllers
 {
-    [UserFilter]
+    // [UserFilter] İlk adminin kayıt edilebilmesi için yorum içerisine alınmıştır
+    // ilk admin kayıt edildikten sonra yorum içerisinden çıkarılmalıdır
+    // ilk admin kayıt adresi = "/Admin/Register"
     public class AdminController : Controller
     {
         private readonly Context _context;
